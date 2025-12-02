@@ -1,0 +1,39 @@
+class MyRunnable implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Runnable thread: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+public class ThreadExample2 {
+    public static void main(String[] args) {
+        MyRunnable r = new MyRunnable();
+        Thread t1 = new Thread(r);
+        t1.start();
+
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Main thread: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+
+
+
+OUTPUT:
+Thread running: 1
+Main thread: 1
+Thread running: 2
+Main thread: 2
+...
